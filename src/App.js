@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import './App.css';
 import DropStackCard from './component/DropStackCard';
 
@@ -11,13 +12,16 @@ function App() {
 
   //create a function to add the draggable into the dropbox
   const handleToDrop = (event, dropStackArr) => {
-    console.log(event.target.innerText);
     const newDraggable = event.target.innerText;
     dropStackArr.push(newDraggable);
-    console.log('ban', dropStackArr)
     setDropStackArr(dropStackArr);
     setLen(dropStackArr.length);
-    console.log('len', len)
+    toast.success('Draggable added into dropbox successfully')
+
+    const node = document.getElementById('aBtn');
+    const newNode = node.cloneNode(true);
+    newNode.classList.add('clone')
+    console.log(newNode, 'node')
   }
 
 
@@ -26,16 +30,18 @@ function App() {
     const newArr = dropStackArr.filter((element, index) => index !== i - 1)
     setDropStackArr(newArr);
     setLen(newArr.length);
+    toast.error('Draggable delete from dropbox successfully')
   }
 
 
   return (
     <div className="App grid grid-cols-2 md:grid-cols-3 bg-black h-screen">
+      <Toaster></Toaster>
       <div className="mt-12 mx-auto">
         <h3 className="text-xl font-semibold text-gray-300">
           Draggables
         </h3>
-        <button onClick={(event) => handleToDrop(event, dropStackArr)} className="block my-5 hover:bg-pink-300 border bg-white w-12 h-12 font-semibold rounded-3xl">
+        <button id="aBtn" onClick={(event) => handleToDrop(event, dropStackArr)} className="block my-5 hover:bg-pink-300 border bg-white w-12 h-12 font-semibold rounded-3xl">
           A
         </button>
         <button onClick={(event) => handleToDrop(event, dropStackArr)} className="block my-5 hover:bg-pink-300 bg-white w-12 h-12 font-semibold rounded-3xl">
@@ -46,10 +52,10 @@ function App() {
         </button>
       </div>
       <div className="mt-32">
-        <div className="w-32 h-16 bg-amber-500 rounded-lg absolute top-[110px] left-[43%] z-10">
+        <div className="w-32 h-16 bg-amber-500 rounded-lg absolute top-[110px] md:left-[38%] lg:left-[44%] z-10">
 
         </div>
-        <div className="w-8 h-8 bg-orange-700 rounded-2xl flex items-center justify-center absolute top-[105px] left-[56%]">
+        <div className="w-8 h-8 bg-orange-700 rounded-2xl flex items-center justify-center absolute md:top-[102px] lg:top-[105px] md:left-[60%] lg:left-[55%]">
           <p>
             {len}
           </p>
