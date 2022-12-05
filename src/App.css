@@ -38,19 +38,9 @@
   }
 }
 
-@keyframes dropping {
-  from {
-    background-color: aquamarine;
-    left: 0px;
+@media screen and (max-width: 480px) {
+  .mobileResponsive {
+    margin-left: -30%;
+    width: 90%;
   }
-
-  to {
-    background-color: tomato;
-    right: 300px;
-  }
-}
-
-.clone {
-  animation: dripping 1s ease-in-out 0.5s 1 alternate;
-  animation-play-state: running;
 }

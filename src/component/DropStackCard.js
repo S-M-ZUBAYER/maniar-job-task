@@ -1,7 +1,6 @@
 import React from 'react';
 
 const DropStackCard = ({ dropStack, i, handleToDelete }) => {
-    console.log(dropStack)
     return (
         <div className=" my-3 bg-zinc-700 text-gray-400 w-1/2 mx-auto py-1 flex justify-between px-2 rounded-sm">
             <p>{dropStack} dropped</p>
