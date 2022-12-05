@@ -54,7 +54,7 @@ function App() {
       </div>
       <div className="mt-32 mobileResponsive">
 
-        <div onDragEnter={(e) => handleDragEnter(dropStackArr)} className="mx-auto  md:w-48 h-32  bg-amber-300 flex justify-center items-center rounded-lg relative">
+        <div onDragLeaveCapture={(e) => handleDragEnter(dropStackArr)} className="mx-auto  md:w-48 h-32  bg-amber-300 flex justify-center items-center rounded-lg relative">
           <div className="w-32 h-16 bg-amber-500 rounded-lg absolute top-[-10%]  left-[0%] ">
 
           </div>
